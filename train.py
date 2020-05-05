@@ -15,8 +15,8 @@ MAX_STEP = 10000  # 一般大于10K
 learning_rate = 0.0001  # 一般小于0.0001
 
 # 获取批次batch
-train_dir = 'D:/ML/flower/input_data'  # 训练样本的读入路径
-logs_train_dir = 'D:/ML/flower/save'  # logs存储路径
+train_dir = 'D:/deal_photo/input_data'  # 训练样本的读入路径
+logs_train_dir = 'D:/deal_photo/flower/save'  # logs存储路径
 
 # train, train_label = input_data.get_files(train_dir)
 train, train_label, val, val_label = input_data.get_files(train_dir, 0.3)

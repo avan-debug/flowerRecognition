@@ -1,7 +1,7 @@
 #!/bin/python
 
 import wx
-from test import evaluate_one_image
+from myTest import evaluate_one_image
 from PIL import Image
 import numpy as np
 import tensorflow as tf
@@ -24,13 +24,13 @@ class HelloFrame(wx.Frame):
         st.SetFont(font)
 
         # 选择图像文件按钮
-        btn = wx.Button(pnl, -1, "select")
+        btn = wx.Button(pnl, -1, "选择花朵图片")
         btn.Bind(wx.EVT_BUTTON, self.OnSelect)
 
         self.makeMenuBar()
 
         self.CreateStatusBar()
-        self.SetStatusText("Welcome to flower world")
+        self.SetStatusText("")
 
     def makeMenuBar(self):
         fileMenu = wx.Menu()
@@ -43,8 +43,8 @@ class HelloFrame(wx.Frame):
         aboutItem = helpMenu.Append(wx.ID_ABOUT)
 
         menuBar = wx.MenuBar()
-        menuBar.Append(fileMenu, "&File")
-        menuBar.Append(helpMenu, "Help")
+        menuBar.Append(fileMenu, "&文件")
+        menuBar.Append(helpMenu, "帮助")
 
         self.SetMenuBar(menuBar)
 
@@ -92,6 +92,6 @@ class HelloFrame(wx.Frame):
 if __name__ == '__main__':
 
     app = wx.App()
-    frm = HelloFrame(None, title='flower wolrd', size=(1000,600))
+    frm = HelloFrame(None, title='花朵识别', size=(1000,600))
     frm.Show()
     app.MainLoop()
