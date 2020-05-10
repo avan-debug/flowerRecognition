@@ -11,7 +11,7 @@ IMG_W = 64  # resize图像，太大的话训练时间久
 IMG_H = 64
 BATCH_SIZE = 20
 CAPACITY = 200
-MAX_STEP = 10000  # 一般大于10K
+MAX_STEP = 1500
 learning_rate = 0.0001  # 一般小于0.0001
 
 # 获取批次batch
@@ -61,12 +61,12 @@ try:
         _, tra_loss, tra_acc = sess.run([train_op, train_loss, train_acc])
 
         # 每隔50步打印一次当前的loss以及acc，同时记录log，写入writer
-        if step % 10 == 0:
+        if step % 50 == 0:
             print('Step %d, train loss = %.2f, train accuracy = %.2f%%' % (step, tra_loss, tra_acc * 100.0))
             summary_str = sess.run(summary_op)
             train_writer.add_summary(summary_str, step)
         # 每隔100步，保存一次训练好的模型
-        if (step + 1) == MAX_STEP:
+        if step % 100 == 0:
             checkpoint_path = os.path.join(logs_train_dir, 'model.ckpt')
             saver.save(sess, checkpoint_path, global_step=step)
 
